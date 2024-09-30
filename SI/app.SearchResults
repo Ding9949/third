@@ -1,0 +1,4 @@
+---- can1_task Matches (3 in 3 files) ----
+Api_canbus.c (e:\0-klhzrd\code1\klwlf\klwlf_mctl\user\app):void can1_task(void)
+Api_canbus.h (e:\0-klhzrd\code1\klwlf\klwlf_mctl\user\app):void can1_task(void);
+Sys_main.c (e:\0-klhzrd\code1\klwlf\klwlf_mctl\user):		can1_task();

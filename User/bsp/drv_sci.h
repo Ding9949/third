@@ -1,0 +1,85 @@
+#ifndef __drv_sci_h
+#define __drv_sci_h
+
+#include "sys_bsp.h"
+
+#define USART_BUS_TXD 1
+#define USART_BUS_RXD 0
+
+
+#define SCI_A_RCC_Periph   		RCC_APB2Periph_USART1
+#define SCI_A_USART						USART1
+#define SCI_A_TXD_PORT PA9
+#define SCI_A_RXD_PORT PA10
+#define SCI_A_BaudRate 				19200
+
+
+#define SCI_A_DE_PORT PA11
+#define SCI_A_DE_CTL(c) 			PORTout(SCI_A_DE_PORT) = (c?Bit_SET:Bit_RESET)
+
+#define USARTA_TXD_OK() 			USART_GetFlagStatus(SCI_A_USART,USART_FLAG_TXE)&&USART_GetFlagStatus(SCI_A_USART,USART_FLAG_TC) 
+#define USARTA_RXD_OK() 			USART_GetFlagStatus(SCI_A_USART,USART_FLAG_RXNE) 
+#define USARTA_DISABLE() 			USART_Cmd(SCI_A_USART, DISABLE)
+#define USARTA_ENABLE() 			USART_Cmd(SCI_A_USART, ENABLE)
+#define USARTA_ETXI()					USART_ITConfig(SCI_A_USART, USART_IT_TXE, ENABLE)
+#define USARTA_DTXI() 					USART_ITConfig(SCI_A_USART, USART_IT_TXE, DISABLE)
+#define USARTA_ERXI()					USART_ITConfig(SCI_A_USART, USART_IT_RXNE, ENABLE)
+#define USARTA_DRXI() 					USART_ITConfig(SCI_A_USART, USART_IT_RXNE, DISABLE)
+#define USARTA_TXD(c) 				USART_SendData(SCI_A_USART,c)
+#define USARTA_RXD() 					USART_ReceiveData(SCI_A_USART)
+#define USARTA_STS()  				SCI_A_USART->SR
+#define USARTA_TC_CLR()   			USART_ClearFlag(SCI_A_USART, USART_FLAG_TC)
+
+
+
+#define SCI_B_RCC_Periph   		RCC_APB1Periph_USART3
+#define SCI_B_USART						USART3
+#define SCI_B_TXD_PORT PB10
+#define SCI_B_RXD_PORT PB11
+#define SCI_B_BaudRate 				19200
+
+#define SCI_B_DE_PORT PE15
+#define SCI_B_DE_CTL(c) 			PORTout(SCI_B_DE_PORT) = (c?Bit_SET:Bit_RESET)
+
+#define USARTB_TXD_OK() 			USART_GetFlagStatus(SCI_B_USART,USART_FLAG_TXE)&&USART_GetFlagStatus(SCI_B_USART,USART_FLAG_TC) 
+#define USARTB_RXD_OK() 			USART_GetFlagStatus(SCI_B_USART,USART_FLAG_RXNE) 
+#define USARTB_DISABLE() 			USART_Cmd(SCI_B_USART, DISABLE)
+#define USARTB_ENABLE() 			USART_Cmd(SCI_B_USART, ENABLE)
+#define USARTB_ETXI()					USART_ITConfig(SCI_B_USART, USART_IT_TXE, ENABLE)
+#define USARTB_DTXI() 					USART_ITConfig(SCI_B_USART, USART_IT_TXE, DISABLE)
+#define USARTB_ERXI()					USART_ITConfig(SCI_B_USART, USART_IT_RXNE, ENABLE)
+#define USARTB_DRXI() 					USART_ITConfig(SCI_B_USART, USART_IT_RXNE, DISABLE)
+#define USARTB_TXD(c) 				USART_SendData(SCI_B_USART,c)
+#define USARTB_RXD() 					USART_ReceiveData(SCI_B_USART)
+#define USARTB_STS()  				SCI_B_USART->SR
+#define USARTB_TC_CLR()   			USART_ClearFlag(SCI_B_USART, USART_FLAG_TC)
+
+
+#define SCI_C_RCC_Periph   		RCC_APB2Periph_USART6
+#define SCI_C_USART						USART6
+#define SCI_C_TXD_PORT PC6
+#define SCI_C_RXD_PORT PC7
+#define SCI_C_BaudRate 				19200
+
+#define SCI_C_DE_PORT PC8
+#define SCI_C_DE_CTL(c) 			PORTout(SCI_C_DE_PORT) = (c?Bit_SET:Bit_RESET)
+
+#define USARTC_TXD_OK() 			USART_GetFlagStatus(SCI_C_USART,USART_FLAG_TXE)&&USART_GetFlagStatus(SCI_C_USART,USART_FLAG_TC) 
+#define USARTC_RXD_OK() 			USART_GetFlagStatus(SCI_C_USART,USART_FLAG_RXNE) 
+#define USARTC_DISABLE() 			USART_Cmd(SCI_C_USART, DISABLE)
+#define USARTC_ENABLE() 			USART_Cmd(SCI_C_USART, ENABLE)
+#define USARTC_ETXI()					USART_ITConfig(SCI_C_USART, USART_IT_TXE, ENABLE)
+#define USARTC_DTXI() 					USART_ITConfig(SCI_C_USART, USART_IT_TXE, DISABLE)
+#define USARTC_ERXI()					USART_ITConfig(SCI_C_USART, USART_IT_RXNE, ENABLE)
+#define USARTC_DRXI() 					USART_ITConfig(SCI_C_USART, USART_IT_RXNE, DISABLE)
+#define USARTC_TXD(c) 				USART_SendData(SCI_C_USART,c)
+#define USARTC_RXD() 					USART_ReceiveData(SCI_C_USART)
+#define USARTC_STS()  				SCI_C_USART->SR
+#define USARTC_TC_CLR()   			USART_ClearFlag(SCI_C_USART, USART_FLAG_TC)
+
+
+void drv_sci_init(void);
+
+#endif
+
+
